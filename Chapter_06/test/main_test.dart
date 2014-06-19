@@ -21,7 +21,22 @@ main() {
   group('recipe-book', () {
     test('should load recipes', async(inject((Injector injector,
                                               MockHttpBackend backend) {
-      backend.expectGET('recipes.json').respond('[{"name": "test1"}]');
+      backend.expectGET('recipes.json').respond('''
+[
+  {
+    "id" : "1",
+    "name" : "foo",
+    "category" : "Appetizers",
+    "ingredients" : {
+        "mushrooms" : "12",
+        "oz bleu cheese" : "8"
+    },
+    "directions" : "some text",
+    "rating" : 1,
+    "imgUrl" : "noop.jpg"
+  }
+]
+''');
       backend.expectGET('categories.json').respond('["c1"]');
 
       var recipesController = injector.get(RecipeBookController);
@@ -36,7 +51,22 @@ main() {
 
     test('should select recipe', async(inject((Injector injector,
                                                MockHttpBackend backend) {
-      backend.expectGET('recipes.json').respond('[{"name": "test1"}]');
+      backend.expectGET('recipes.json').respond('''
+[
+  {
+    "id" : "2",
+    "name" : "bar",
+    "category" : "Another Appetizers",
+    "ingredients" : {
+        "mushrooms" : "7",
+        "oz bleu cheese" : "3"
+    },
+    "directions" : "some other text",
+    "rating" : 2,
+    "imgUrl" : "noop2.jpg"
+  }
+]
+''');
       backend.expectGET('categories.json').respond('["c1"]');
 
       var recipesController = injector.get(RecipeBookController);
@@ -77,8 +107,8 @@ main() {
 
   group('categoryFilter', () {
     test('should return subset', inject((CategoryFilter filter) {
-      var r1 = new Recipe(null, null, 'C1', null, null, null, null);
-      var r2 = new Recipe(null, null, 'C2', null, null, null, null);
+      var r1 = new Recipe(null, null, 'C1', null, null, null, null, null, null);
+      var r2 = new Recipe(null, null, 'C2', null, null, null, null, null, null);
       var list = [r1, r2];
       var map = {"C1": false, "C2": true};
       expect(filter(list, map), equals([r2]));

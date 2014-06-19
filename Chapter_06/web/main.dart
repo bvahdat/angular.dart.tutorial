@@ -6,6 +6,9 @@ import 'package:logging/logging.dart';
 
 import 'package:angular_dart_demo/recipe_book.dart';
 import 'package:angular_dart_demo/formatter/category_filter.dart';
+import 'package:angular_dart_demo/formatter/fahrenheit_to_celsius_filter.dart';
+import 'package:angular_dart_demo/formatter/multiplier_filter.dart';
+import 'package:angular_dart_demo/formatter/sugar_filter.dart';
 import 'package:angular_dart_demo/rating/rating_component.dart';
 import 'package:angular_dart_demo/tooltip/tooltip.dart';
 import 'package:angular_dart_demo/service/query_service.dart';
@@ -19,6 +22,9 @@ class MyAppModule extends Module {
     type(RatingComponent);
     type(Tooltip);
     type(CategoryFilter);
+    type(FtoCFilter);
+    type(MultiplierFilter);
+    type(SugarFilter);
     type(SearchRecipeComponent);
     type(ViewRecipeComponent);
     type(QueryService);

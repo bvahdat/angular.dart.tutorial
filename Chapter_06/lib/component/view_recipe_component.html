@@ -10,17 +10,29 @@
     <div><strong>Rating: </strong>
         <rating max-rating="5" rating="cmp.recipe.rating"></rating>
     </div>
+     <div>
+      <strong>Apply sugar filter:</strong>
+      <input type="checkbox" ng-model="cmp.applySugarFilter" />
+    </div>
+     <div>
+      <strong>Apply ftoc filter:</strong>
+      <input type="checkbox" ng-model="cmp.applyFtoCFilter" />
+    </div>
+    <div>
+      <strong>Number of guests:</strong>
+      <input type="number" min="1" max="4" ng-model="cmp.multiplier">
+    </div>
     <div>
       <strong>Ingredients:</strong>
       <ul>
-        <li ng-repeat="ingredient in cmp.recipe.ingredients">
-          {{ingredient}}
+        <li ng-repeat="ingredient in cmp.recipe.ingredient | sugarfilter:cmp.applySugarFilter">
+          {{cmp.recipe.ingredientAmountOf($index) | multiplierfilter:cmp.multiplier}} {{ingredient}}
         </li>
       </ul>
     </div>
     <div>
       <strong>Directions:</strong>
-      {{cmp.recipe.directions}}
+      {{cmp.recipe.directions | ftocfilter:cmp.applyFtoCFilter | sugarfilter:cmp.applySugarFilter}}
     </div>
   </div>
   <div ng-if="cmp.recipe == null">

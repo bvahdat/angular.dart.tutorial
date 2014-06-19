@@ -12,6 +12,15 @@ class ViewRecipeComponent {
   @NgOneWay('recipe-map')
   Map<String, Recipe> recipeMap;
 
+  @NgOneWay('applySugarFilter')
+  bool applySugarFilter = false;
+
+  @NgOneWay('applyFtoCFilter')
+  bool applyFtoCFilter = false;
+
+  @NgOneWay('multiplier')
+  int multiplier = 1;
+
   String _recipeId;
 
   Recipe get recipe => recipeMap == null ? null : recipeMap[_recipeId];
