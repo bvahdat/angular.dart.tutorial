@@ -13,14 +13,14 @@
       <h3>Recipe List</h3>
 
       <nav id="controls">
-        <search-recipe 
+        <search-recipe
             name-filter-string="ctrl.nameFilter"
             category-filter-map="ctrl.categoryFilterMap">
         </search-recipe>
-
-        <a href="#/add"><input type="button" value="Add Recipe"></a><br/>
+        <br/>
+        <a href="#/add"><input type="button" value="Add a new Recipe"></a><br/>
       </nav>
-      
+
       <nav id="search-results">
         <div id="recipe-list">
           <ul>
@@ -31,13 +31,13 @@
               </span>
             </li>
           </ul>
-        </div>      
+        </div>
       </nav>
-  
+
       <section id="details">
         <ng-view></ng-view>
       </section>
-      
+
     </div>
 
   </div>

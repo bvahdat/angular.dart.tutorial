@@ -1,4 +1,4 @@
-<div id="recipe-details">
+<div id="view-recipe">
   <h3>Recipe Details</h3>
   <div ng-if="cmp.recipe != null">
     <a class="extra-space" href="#/recipe/{{cmp.recipe.id}}/edit">
@@ -8,7 +8,7 @@
     <div><strong>Name: </strong>{{cmp.recipe.name}}</div>
     <div><strong>Category: </strong>{{cmp.recipe.category}}</div>
     <div><strong>Rating: </strong>
-        <rating max-rating="5" rating="cmp.recipe.rating"></rating>
+      <rating max-rating="5" rating="cmp.recipe.rating"></rating>
     </div>
      <div>
       <strong>Apply sugar filter:</strong>
@@ -25,7 +25,7 @@
     <div>
       <strong>Ingredients:</strong>
       <ul>
-        <li ng-repeat="ingredient in cmp.recipe.ingredient | sugarfilter:cmp.applySugarFilter">
+        <li ng-repeat="ingredient in cmp.recipe.ingredientNames | sugarfilter:cmp.applySugarFilter">
           {{cmp.recipe.ingredientAmountOf($index) | multiplierfilter:cmp.multiplier}} {{ingredient}}
         </li>
       </ul>

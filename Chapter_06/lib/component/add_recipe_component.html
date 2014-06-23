@@ -1,0 +1,36 @@
+<div id="add-recipe">
+  <h3>Add Recipe</h3>
+  <a class="extra-space" href="../index.html">
+    <input type="button" value="Add this Recipe" on-click="cmp.addRecipe()">
+  </a>
+
+  <div><strong>Name: </strong>
+    <input type="text" ng-model="cmp.recipe.name"/>
+  </div>
+  <div><strong>Category: </strong>
+  <select required ng-model="cmp.recipe.category">
+    <option ng-repeat="category in cmp.allCategories" ng-value="category">{{category}}</option>
+  </select>
+  </div>
+  <div><strong>Rating: </strong>
+    <rating max-rating="5" rating="cmp.recipe.rating"></rating>
+  </div>
+  <div>
+    <strong>Ingredients:</strong>
+    <ul>
+      <li ng-repeat="ingredient in cmp.recipe.ingredientNames">
+        <input type="text" ng-model="cmp.recipe.ingredientAmountOf($index)" ng-if="cmp.recipe.isIngredientAmountEditable($index)"/>
+        <input type="text" ng-model="ingredient"/>
+      </li>
+    </ul>
+    <form ng-submit="cmp.addIngredient()">
+      <input type="text" ng-model="cmp.ingredientAmount" size="30">
+      <input type="text" ng-model="cmp.ingredientName" size="30">
+      <input class="btn-primary" type="submit" value="add ingredient">
+    </form>
+  </div>
+  <div>
+    <strong>Directions:</strong><br/><br/>
+    <textarea cols="100" rows="8" ng-model="cmp.recipe.directions"></textarea>
+  </div>
+</div>

@@ -1,6 +1,8 @@
 library query_service;
 
 import 'dart:async';
+import 'dart:convert';
+import 'dart:html';
 
 import 'recipe.dart';
 import 'package:angular/angular.dart';
@@ -14,6 +16,7 @@ class QueryService {
 
   Map<String, Recipe> _recipesCache;
   List<String> _categoriesCache;
+  String _lastId;
 
   final Http _http;
 
@@ -28,6 +31,11 @@ class QueryService {
         for (Map recipe in response.data) {
           Recipe r = new Recipe.fromJson(recipe);
           _recipesCache[r.id] = r;
+
+          // update the last id we've got so far
+          if (_lastId == null || int.parse(r.id) > int.parse(_lastId)) {
+            _lastId = r.id;
+          }
         }
       });
   }
@@ -55,4 +63,28 @@ class QueryService {
         ? _loaded.then((_) => _categoriesCache)
         : new Future.value(_categoriesCache);
   }
+
+  addRecipe(Recipe recipe) {
+    // inc the max id we've got so far
+    _lastId = (int.parse(_lastId) + 1).toString();
+    recipe.id = _lastId;
+
+    _updateBackendWith(recipe);
+  }
+
+  saveRecipe(Recipe recipe) {
+    _updateBackendWith(recipe);
+  }
+
+  _updateBackendWith(Recipe recipe) {
+    _recipesCache[recipe.id] = recipe;
+
+    // see https://code.google.com/p/dart/issues/detail?id=10525
+    String recipes = JSON.encode(_recipesCache.values.toList());
+    _http.put('http://127.0.0.1:3031/recipes.json', recipes)
+      .then((HttpResponse response) {
+        window.console.log('saved $recipes with the status $response');
+    });
+  }
+
 }

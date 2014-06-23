@@ -13,6 +13,8 @@ import 'package:angular_dart_demo/rating/rating_component.dart';
 import 'package:angular_dart_demo/tooltip/tooltip.dart';
 import 'package:angular_dart_demo/service/query_service.dart';
 import 'package:angular_dart_demo/routing/recipe_book_router.dart';
+import 'package:angular_dart_demo/component/add_recipe_component.dart';
+import 'package:angular_dart_demo/component/edit_recipe_component.dart';
 import 'package:angular_dart_demo/component/view_recipe_component.dart';
 import 'package:angular_dart_demo/component/search_recipe_component.dart';
 
@@ -25,6 +27,8 @@ class MyAppModule extends Module {
     type(FtoCFilter);
     type(MultiplierFilter);
     type(SugarFilter);
+    type(AddRecipeComponent);
+    type(EditRecipeComponent);
     type(SearchRecipeComponent);
     type(ViewRecipeComponent);
     type(QueryService);

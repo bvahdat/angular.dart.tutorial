@@ -1,7 +1,6 @@
 library tooltip;
 
 import 'dart:html' as dom;
-import 'dart:math';
 import 'package:angular/angular.dart';
 
 @Decorator(

@@ -1,0 +1,34 @@
+<div id="edit-recipe">
+  <h3>Edit Recipe</h3>
+  <div ng-if="cmp.recipe != null">
+    <a class="extra-space" href="#/recipe/{{cmp.recipe.id}}/view">
+      <input type="button" value="Save this Recipe" on-click="cmp.saveRecipe()">
+    </a>
+
+    <div><strong>Name: </strong>
+      <input type="text" ng-model="cmp.recipe.name"/>
+    </div>
+    <div><strong>Category: </strong>
+      <input type="text" ng-model="cmp.recipe.category"/>
+    </div>
+    <div><strong>Rating: </strong>
+      <rating max-rating="5" rating="cmp.recipe.rating"></rating>
+    </div>
+    <div>
+      <strong>Ingredients:</strong>
+      <ul>
+        <li ng-repeat="ingredient in cmp.recipe.ingredientNames">
+          <input type="text" ng-model="cmp.recipe.ingredientAmountOf($index)" ng-if="cmp.recipe.isIngredientAmountEditable($index)"/>
+          <input type="text" ng-model="ingredient"/>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <strong>Directions:</strong>
+      <textarea cols="100" rows="8" ng-model="cmp.recipe.directions"></textarea>
+    </div>
+  </div>
+  <div ng-if="cmp.recipe == null">
+    <p>Sorry, we could not find the details of the recipe you requested.</p>
+  </div>
+</div>
