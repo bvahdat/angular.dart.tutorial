@@ -4,12 +4,15 @@ import 'package:angular/angular.dart';
 
 @Formatter(name: 'multiplierfilter')
 class MultiplierFilter {
-  call(text, multiplier) {
-    if (text is String && !text.isEmpty && multiplier is int) {
-      return double.parse(text) * multiplier;
+  call(number, multiplier) {
+    if (number is String && !number.isEmpty && multiplier is int) {
+      number = double.parse(number) * multiplier;
+
+      // avoid long fraction digits
+      return number.toStringAsFixed(2);
     }
 
-    return text;
+    return number;
   }
 
 }
