@@ -1,16 +1,16 @@
 library recipe_book_routing;
 
 import 'package:angular/angular.dart';
-import 'dart:async';
+import 'dart:html';
 
 void recipeBookRouteInitializer(Router router, RouteViewFactory views) {
   views.configure({
     'add': ngRoute(
         path: '/add',
         view: 'view/addRecipe.html',
-        leave: (RouteLeaveEvent e) {
-          // TODO: leave() doesn't seem to work, see https://github.com/angular/route.dart/issues/28
-          e.allowLeave(new Future.value(false));
+        preLeave: (RoutePreLeaveEvent e) {
+          // TODO: how to save/ignore changes done for a new recipe?
+          bool trash = window.confirm("Your recipe has not been save to the Backend. Do you want to trash this receipe?");
         }),
     'recipe': ngRoute(
         path: '/recipe/:recipeId',

@@ -11,17 +11,15 @@ import 'dart:collection';
     cssUrl: 'packages/angular_dart_demo/component/add_recipe_component.css',
     publishAs: 'cmp')
 class AddRecipeComponent {
-  static final String _DEFAULT_INGREDIENT_AMOUNT = "Type the amount here!";
-  static final String _DEFAULT_INGREDIENT_NAME = "Type the ingredient here!";
+  static const String _DEFAULT_INGREDIENT_AMOUNT = "Type the amount here!";
+  static const String _DEFAULT_INGREDIENT_NAME = "Type the ingredient here!";
 
   List<String> _allCategories;
-  Map<String, bool> selectedCategory = new Map<String, bool>();
 
   @NgOneWay('all-categories')
   List<String> get allCategories => _allCategories == null ? throw 'unexpected null value for _allCategories!' : _allCategories;
   void set allCategories(List<String> values) {
     _allCategories = values;
-    values.forEach((element) => selectedCategory[element] = false);
   }
 
   final QueryService queryService;
