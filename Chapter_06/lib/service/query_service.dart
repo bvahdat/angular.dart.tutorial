@@ -11,6 +11,7 @@ import 'package:angular/angular.dart';
 class QueryService {
   String _recipesUrl = 'recipes.json';
   String _categoriesUrl = 'categories.json';
+  Converter<Object, String> converter;
 
   Future _loaded;
 
@@ -21,6 +22,7 @@ class QueryService {
   final Http _http;
 
   QueryService(Http this._http) {
+    converter = new JsonEncoder.withIndent("  ");
     _loaded = Future.wait([_loadRecipes(), _loadCategories()]);
   }
 
@@ -80,7 +82,7 @@ class QueryService {
     _recipesCache[recipe.id] = recipe;
 
     // see https://code.google.com/p/dart/issues/detail?id=10525
-    String recipes = JSON.encode(_recipesCache.values.toList());
+    String recipes = converter.convert(_recipesCache.values.toList());
     _http.put('http://127.0.0.1:3031/recipes.json', recipes)
       .then((HttpResponse response) {
         window.console.log('saved $recipes with the status $response');

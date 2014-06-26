@@ -24,16 +24,16 @@ main() {
       backend.expectGET('recipes.json').respond('''
 [
   {
-    "id" : "1",
-    "name" : "foo",
-    "category" : "Appetizers",
-    "ingredients" : {
-        "mushrooms" : "12",
-        "oz bleu cheese" : "8"
+    "id": "1",
+    "name": "foo",
+    "category": "Appetizers",
+    "ingredients": {
+        "mushrooms": "12",
+        "oz bleu cheese": "8"
     },
-    "directions" : "some text",
-    "rating" : 1,
-    "imgUrl" : "noop.jpg"
+    "directions": "some text",
+    "rating": 1,
+    "imgUrl": "noop.jpg"
   }
 ]
 ''');
@@ -54,16 +54,16 @@ main() {
       backend.expectGET('recipes.json').respond('''
 [
   {
-    "id" : "2",
-    "name" : "bar",
-    "category" : "Another Appetizers",
-    "ingredients" : {
-        "mushrooms" : "7",
-        "oz bleu cheese" : "3"
+    "id": "2",
+    "name": "bar",
+    "category": "Another Appetizers",
+    "ingredients": {
+        "mushrooms": "7",
+        "oz bleu cheese": "3"
     },
-    "directions" : "some other text",
-    "rating" : 2,
-    "imgUrl" : "noop2.jpg"
+    "directions": "some other text",
+    "rating": 2,
+    "imgUrl": "noop2.jpg"
   }
 ]
 ''');
