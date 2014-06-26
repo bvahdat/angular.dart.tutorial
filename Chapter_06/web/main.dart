@@ -21,7 +21,6 @@ import 'package:angular_dart_demo/component/search_recipe_component.dart';
 class MyAppModule extends Module {
   MyAppModule() {
     bind(RecipeBookController);
-    bind(RatingComponent);
     bind(Tooltip);
     bind(CategoryFilter);
     bind(FtoCFilter);
@@ -29,6 +28,7 @@ class MyAppModule extends Module {
     bind(SugarFilter);
     bind(AddRecipeComponent);
     bind(EditRecipeComponent);
+    bind(RatingComponent);
     bind(SearchRecipeComponent);
     bind(ViewRecipeComponent);
     bind(QueryService);
