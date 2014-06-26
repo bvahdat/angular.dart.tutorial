@@ -10,16 +10,11 @@ import 'package:angular/angular.dart';
     cssUrl: 'packages/angular_dart_demo/component/edit_recipe_component.css',
     publishAs: 'cmp')
 class EditRecipeComponent {
+  @NgOneWay('categories')
+  List<String> categories;
+
   @NgOneWay('recipe-map')
   Map<String, Recipe> recipeMap;
-
-  List<String> _allCategories;
-
-  @NgOneWay('all-categories')
-  List<String> get allCategories => _allCategories == null ? throw 'unexpected null value for _allCategories!' : _allCategories;
-  void set allCategories(List<String> values) {
-    _allCategories = values;
-  }
 
   final QueryService queryService;
   String _recipeId;

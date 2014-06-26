@@ -14,13 +14,8 @@ class AddRecipeComponent {
   static const String _DEFAULT_INGREDIENT_AMOUNT = "Type the amount here!";
   static const String _DEFAULT_INGREDIENT_NAME = "Type the ingredient here!";
 
-  List<String> _allCategories;
-
-  @NgOneWay('all-categories')
-  List<String> get allCategories => _allCategories == null ? throw 'unexpected null value for _allCategories!' : _allCategories;
-  void set allCategories(List<String> values) {
-    _allCategories = values;
-  }
+  @NgOneWay('categories')
+  List<String> categories;
 
   final QueryService queryService;
 
