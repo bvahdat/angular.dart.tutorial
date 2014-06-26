@@ -20,20 +20,31 @@ import 'package:angular_dart_demo/component/search_recipe_component.dart';
 
 class MyAppModule extends Module {
   MyAppModule() {
+    // controllers
     bind(RecipeBookController);
-    bind(Tooltip);
-    bind(CategoryFilter);
-    bind(FtoCFilter);
-    bind(MultiplierFilter);
-    bind(SugarFilter);
+
+    // components
     bind(AddRecipeComponent);
     bind(EditRecipeComponent);
     bind(RatingComponent);
     bind(SearchRecipeComponent);
     bind(ViewRecipeComponent);
+
+    // decorators
+    bind(Tooltip);
+
+    // filters
+    bind(CategoryFilter);
+    bind(FtoCFilter);
+    bind(MultiplierFilter);
+    bind(SugarFilter);
+
+    // injectables
     bind(QueryService);
-    bind(RouteInitializerFn, toValue : recipeBookRouteInitializer);
     bind(NgRoutingUsePushState, toFactory: (_) => new NgRoutingUsePushState.value(false));
+
+    // routing
+    bind(RouteInitializerFn, toValue : recipeBookRouteInitializer);
   }
 }
 
