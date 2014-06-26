@@ -20,21 +20,20 @@ import 'package:angular_dart_demo/component/search_recipe_component.dart';
 
 class MyAppModule extends Module {
   MyAppModule() {
-    type(RecipeBookController);
-    type(RatingComponent);
-    type(Tooltip);
-    type(CategoryFilter);
-    type(FtoCFilter);
-    type(MultiplierFilter);
-    type(SugarFilter);
-    type(AddRecipeComponent);
-    type(EditRecipeComponent);
-    type(SearchRecipeComponent);
-    type(ViewRecipeComponent);
-    type(QueryService);
-    value(RouteInitializerFn, recipeBookRouteInitializer);
-    factory(NgRoutingUsePushState,
-        (_) => new NgRoutingUsePushState.value(false));
+    bind(RecipeBookController);
+    bind(RatingComponent);
+    bind(Tooltip);
+    bind(CategoryFilter);
+    bind(FtoCFilter);
+    bind(MultiplierFilter);
+    bind(SugarFilter);
+    bind(AddRecipeComponent);
+    bind(EditRecipeComponent);
+    bind(SearchRecipeComponent);
+    bind(ViewRecipeComponent);
+    bind(QueryService);
+    bind(RouteInitializerFn, toValue : recipeBookRouteInitializer);
+    bind(NgRoutingUsePushState, toFactory: (_) => new NgRoutingUsePushState.value(false));
   }
 }
 
