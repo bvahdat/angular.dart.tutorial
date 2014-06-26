@@ -2,7 +2,7 @@
   <h3>Edit Recipe</h3>
   <div ng-if="cmp.recipe != null">
     <a class="extra-space" href="#/recipe/{{cmp.recipe.id}}/view">
-      <input type="button" value="Save this Recipe" on-click="cmp.saveRecipe()">
+      <input type="button" value="Save this Recipe" ng-click="cmp.saveRecipe()">
     </a>
 
     <div><strong>Name: </strong>
@@ -18,7 +18,7 @@
       <strong>Ingredients:</strong>
       <ul>
         <li ng-repeat="ingredient in cmp.recipe.ingredientNames">
-          <input type="text" ng-model="cmp.recipe.ingredientAmountOf($index)" ng-if="cmp.recipe.isIngredientAmountEditable($index)"/>
+          <input type="text" ng-model="cmp.recipe.ingredients[ingredient]" ng-if="cmp.recipe.isIngredientAmountEditable($index)"/>
           <input type="text" ng-model="ingredient"/>
         </li>
       </ul>

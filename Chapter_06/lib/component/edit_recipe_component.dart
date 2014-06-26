@@ -16,7 +16,7 @@ class EditRecipeComponent {
   final QueryService queryService;
   String _recipeId;
 
-  Recipe get recipe => recipeMap == null ? throw 'unexpected null value for recipeMap!' : recipeMap[_recipeId];
+  Recipe get recipe => recipeMap == null ? null : recipeMap[_recipeId];
 
   EditRecipeComponent(RouteProvider routeProvider, this.queryService) {
     _recipeId = routeProvider.parameters['recipeId'];
