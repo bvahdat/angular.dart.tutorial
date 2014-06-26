@@ -13,6 +13,14 @@ class EditRecipeComponent {
   @NgOneWay('recipe-map')
   Map<String, Recipe> recipeMap;
 
+  List<String> _allCategories;
+
+  @NgOneWay('all-categories')
+  List<String> get allCategories => _allCategories == null ? throw 'unexpected null value for _allCategories!' : _allCategories;
+  void set allCategories(List<String> values) {
+    _allCategories = values;
+  }
+
   final QueryService queryService;
   String _recipeId;
 

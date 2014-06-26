@@ -9,7 +9,9 @@
       <input type="text" ng-model="cmp.recipe.name"/>
     </div>
     <div><strong>Category: </strong>
-      <input type="text" ng-model="cmp.recipe.category"/>
+    <select required ng-model="cmp.recipe.category">
+      <option ng-repeat="category in cmp.allCategories" ng-value="category">{{category}}</option>
+    </select>
     </div>
     <div><strong>Rating: </strong>
       <rating max-rating="5" rating="cmp.recipe.rating"></rating>
