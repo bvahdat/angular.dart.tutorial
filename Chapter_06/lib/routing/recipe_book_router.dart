@@ -11,7 +11,7 @@ void recipeBookRouteInitializer(Router router, RouteViewFactory views) {
         view: 'view/addRecipe.html',
         preLeave: (RoutePreLeaveEvent e) {
           // TODO: how to save/ignore changes done for a new recipe?
-          bool trash = window.confirm("Your recipe has not been persisted on backend. Do you want to trash this receipe?");
+          bool trash = window.confirm("Your recipe has not been persisted on the backend yet! Do you want to trash this receipe?");
           e.allowLeave(new Future.value(true));
         }),
     'recipe': ngRoute(
