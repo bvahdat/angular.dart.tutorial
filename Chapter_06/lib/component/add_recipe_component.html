@@ -23,11 +23,9 @@
         <input type="text" ng-model="ingredient"/>
       </li>
     </ul>
-    <form ng-submit="cmp.addIngredient()">
-      <input type="text" ng-model="cmp.ingredientAmount" size="30">
-      <input type="text" ng-model="cmp.ingredientName" size="30">
-      <input class="btn-primary" type="submit" value="add ingredient">
-    </form>
+    <input type="text" ng-model="cmp.newIngredient['amount']" size="30">
+    <input type="text" ng-model="cmp.newIngredient['name']" size="30">
+    <input type="button" value="Add new ingredient" ng-click="cmp.addIngredient()"/>
   </div>
   <div>
     <strong>Directions:</strong><br/><br/>

@@ -2,6 +2,7 @@ library edit_recipe_component;
 
 import '../service/recipe.dart';
 import '../service/query_service.dart';
+import '../util/add_ingredient.dart';
 import 'package:angular/angular.dart';
 
 @Component(
@@ -21,23 +22,16 @@ class EditRecipeComponent {
 
   Recipe get recipe => recipeMap == null ? null : recipeMap[_recipeId];
 
-  String anotherIngredientName = '';
-  String anotherIngredientAmount = '';
+  Map<String, String> newIngredient;
 
   EditRecipeComponent(RouteProvider routeProvider, this.queryService) {
     _recipeId = routeProvider.parameters['recipeId'];
+    newIngredient = getIngredientInputs();
   }
 
   addIngredient() {
-    anotherIngredientName = anotherIngredientName.trim();
-    anotherIngredientAmount = anotherIngredientAmount.trim();
-
-    if (anotherIngredientName.isEmpty) {
-      return;
-    }
-
-    recipe.ingredients[anotherIngredientName] = anotherIngredientAmount;
-    anotherIngredientName = anotherIngredientAmount = '';
+    addIngredientFor(recipe, newIngredient);
+    newIngredient = getIngredientInputs();
   }
 
   removeIngredient(String ingredient) {

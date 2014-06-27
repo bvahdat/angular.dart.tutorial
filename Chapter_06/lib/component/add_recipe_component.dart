@@ -2,6 +2,7 @@ library add_recipe_component;
 
 import '../service/recipe.dart';
 import '../service/query_service.dart';
+import '../util/add_ingredient.dart';
 import 'package:angular/angular.dart';
 import 'dart:collection';
 
@@ -11,44 +12,27 @@ import 'dart:collection';
     cssUrl: 'packages/angular_dart_demo/component/add_recipe_component.css',
     publishAs: 'cmp')
 class AddRecipeComponent {
-  static const String _DEFAULT_INGREDIENT_AMOUNT = "Type the amount here!";
-  static const String _DEFAULT_INGREDIENT_NAME = "Type the ingredient here!";
-
   @NgOneWay('categories')
   List<String> categories;
 
   final QueryService queryService;
 
-  String ingredientName;
-  String ingredientAmount;
+  Map<String, String> newIngredient;
   Recipe recipe;
 
   AddRecipeComponent(this.queryService) {
-    _resetTextInputs();
     recipe = new Recipe(null, "The recipe name", "The category name", new LinkedHashMap<String, String>(), "The recipe directions", 0, "fonzie1.jpg");
+    newIngredient = getIngredientInputs();
   }
 
   void addIngredient() {
-    if (ingredientName == _DEFAULT_INGREDIENT_NAME) {
-      return;
-    }
-
-    if (ingredientAmount == _DEFAULT_INGREDIENT_AMOUNT) {
-      ingredientAmount = "";
-    }
-
-     recipe.ingredients[ingredientName] = ingredientAmount;
-     _resetTextInputs();
+    addIngredientFor(recipe, newIngredient);
+    newIngredient = getIngredientInputs();
    }
 
   void addRecipe() {
     // the Id property is set through the queryService itself
     queryService.addRecipe(recipe);
-  }
-
-  void _resetTextInputs() {
-    ingredientName = _DEFAULT_INGREDIENT_NAME;
-    ingredientAmount = _DEFAULT_INGREDIENT_AMOUNT;
   }
 
 }
