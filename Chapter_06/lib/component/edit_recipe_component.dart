@@ -29,13 +29,11 @@ class EditRecipeComponent {
   }
 
   addIngredient() {
+    anotherIngredientName = anotherIngredientName.trim();
+    anotherIngredientAmount = anotherIngredientAmount.trim();
+
     if (anotherIngredientName.isEmpty) {
       return;
-    }
-
-    if (anotherIngredientAmount.isEmpty) {
-      // -1 means this ingredient lacks a unit of measurement
-      anotherIngredientAmount = "-1";
     }
 
     recipe.ingredients[anotherIngredientName] = anotherIngredientAmount;

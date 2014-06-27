@@ -25,11 +25,11 @@
         "tbsp fresh thyme":"2",
         "tbsp fresh chives":"3",
         "handful of cherry tomatoes, halved":"1",
-        "slices of parmesan cheese":"-1",
-        "drops lemon juice":"-1",
-        "olive oil":"-1",
-        "garlic clove":"-1",
-        "salt":"-1"
+        "slices of parmesan cheese":"",
+        "drops lemon juice":"",
+        "olive oil":"",
+        "garlic clove":"",
+        "salt":""
     },
     "directions":"Cook and drain the beans. Coat mushrooms with olive oil and grill or pan fry them. Combine the beans, mushrooms, herbs and tomatoes. Combine lemon juice, olive oil, garlic and salt and make an emulsion. Pour the dressing over the bean mixture and stir to combine. Use a carrot peeler to peel some parmesan cheese over the top.",
     "rating": 3,
@@ -50,7 +50,7 @@
         "tablespoon curry powder":"1",
         "teaspoons ground cumin":"1.5",
         "teaspoon cayenne pepper":"0.5",
-        "Coarse salt":"-1",
+        "Coarse salt":"",
         "blades fresh chives, chopped or snipped, for garnish":"20"
     },
     "directions":"Add oil to a soup pot on medium heat. When oil is hot, add onion. Saute onions 5 minutes. Add broth, tomatoes, black beans and pumpkin puree. Stir to combine ingredients and bring soup to a boil. Reduce heat to medium low and stir in cream, curry, cumin, cayenne and salt, to taste. Simmer 5 minutes, adjust seasonings and serve garnished with chopped chives.",
@@ -73,8 +73,8 @@
         "Tbsp lemon juice":"1",
         "Tbsp chopped fresh parsley or dill":"2",
         "ounces smoked salmon, cut into bite sized pieces":"4",
-        "pinch salt":"-1",
-        "Fresh ground black pepper":"-1"
+        "pinch salt":"",
+        "Fresh ground black pepper":""
     },
     "directions":"Bring a pot of water to a boil over high heat to cook the pasta. Meanwhile, toast the pine nuts in a dry pan or toaster oven and set aside. Add olive oil to a sauce pan on medium heat. Add shallots and cook for 5 minutes until soft and just beginning to caramelize. Add garlic and cook until garlic is soft, but not brown. Add wine and reduce. Turn heat to low and add cream (heat needs to be low, or the cream will curdle). When the pasta is finished cooking, drain it and add to the sauce pan. Turn the heat off and stir to combine. Add lemon juice, parsley or dill, pine nuts, and salmon. Add salt and pepper to taste.",
     "rating": 2,
@@ -89,7 +89,7 @@
         "tbsp olive oil":"1",
         "tbsp butter":"1",
         "cup pancetta, chopped":"0.25",
-        "splash of balsamic vinegar":"-1"
+        "splash of balsamic vinegar":""
     },
     "directions":"Wash brussels sprouts, and chop in half. In a pan over medium heat, melt the oil and butter. Add sprouts and pancetta and turn heat to high. Cook until the sprouts are caramelized. Deglaze the pan with a splash of balsamic vinegar.",
     "rating": 3,
@@ -126,7 +126,7 @@
         "inch strips of lemon zest":"3",
         "cracked whole cardamom":"1",
         "couple grinds of fresh shaved nutmeg":"1",
-        "vanilla":"-1"
+        "vanilla":""
         },
     "directions":"Combine all ingredients except the pears in a sauce pan and simmer for 10 minutes. Add the pears to the pan and cook, turning the pears occasionally so that all sides cook evenly. Cook for about 10 minutes, or until pears are soft enough to be poked with a fork.",
     "rating": 3,

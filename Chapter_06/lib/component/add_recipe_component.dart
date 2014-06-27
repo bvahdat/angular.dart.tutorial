@@ -30,8 +30,7 @@ class AddRecipeComponent {
 
   void addIngredient() {
     if (ingredientAmount == _DEFAULT_INGREDIENT_AMOUNT) {
-      // -1 means this ingredient lacks a unit of measurement
-      ingredientAmount = "-1";
+      ingredientAmount = "";
     }
 
      recipe.ingredients[ingredientName] = ingredientAmount;
