@@ -29,14 +29,6 @@ class Recipe {
     return _amounts;
   }
 
-  String ingredientAmountOf(int index) {
-    String amount = ingredientAmounts.elementAt(index);
-    // -1 means that this ingredient lacks a unit of measurement
-    return amount == "-1" ? "" : amount;
-  }
-
-  bool isIngredientAmountEditable(int index) => !ingredientAmountOf(index).isEmpty;
-
   Map<String, dynamic> toJson() => <String, dynamic> {
     "id": id,
     "name": name,

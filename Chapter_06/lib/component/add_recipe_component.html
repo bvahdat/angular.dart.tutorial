@@ -19,7 +19,7 @@
     <strong>Ingredients:</strong>
     <ul>
       <li ng-repeat="ingredient in cmp.recipe.ingredientNames">
-        <input type="text" ng-model="cmp.recipe.ingredients[ingredient]" ng-if="cmp.recipe.isIngredientAmountEditable($index)"/>
+        <input type="text" ng-model="cmp.recipe.ingredients[ingredient]" ng-if="!cmp.recipe.ingredients[ingredient].trim().isEmpty"/>
         <input type="text" ng-model="ingredient"/>
       </li>
     </ul>

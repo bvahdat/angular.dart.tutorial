@@ -29,6 +29,10 @@ class AddRecipeComponent {
   }
 
   void addIngredient() {
+    if (ingredientName == _DEFAULT_INGREDIENT_NAME) {
+      return;
+    }
+
     if (ingredientAmount == _DEFAULT_INGREDIENT_AMOUNT) {
       ingredientAmount = "";
     }

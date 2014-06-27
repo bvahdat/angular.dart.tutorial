@@ -26,7 +26,7 @@
       <strong>Ingredients:</strong>
       <ul>
         <li ng-repeat="ingredient in cmp.recipe.ingredientNames | sugarfilter:cmp.applySugarFilter">
-          {{cmp.recipe.ingredientAmountOf($index) | multiplierfilter:cmp.multiplier}} {{ingredient}}
+          {{cmp.recipe.ingredients[ingredient] | multiplierfilter:cmp.multiplier}} {{ingredient}}
         </li>
       </ul>
     </div>
