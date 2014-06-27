@@ -6,7 +6,7 @@
     "ingredients":{
         "mushrooms":"12",
         "oz bleu cheese":"8",
-        " red onion, diced":"0.5",
+        "red onion, diced":"0.5",
         "cup bread crumbs":"0.25",
         "cup parmesan cheese":"0.25"
     },
@@ -26,7 +26,7 @@
         "tbsp fresh chives":"3",
         "handful of cherry tomatoes, halved":"1",
         "slices of parmesan cheese":"",
-        "drops lemon juice":"",
+        "lemon juice":"",
         "olive oil":"",
         "garlic clove":"",
         "salt":""
@@ -65,9 +65,9 @@
         "ounces spaghetti (or other) pasta":"8",
         "cup pine nuts":"0.25",
         "Tbsp olive oil":"2",
-        "cup chopped shallots (can substitute onions)":"0.3",
+        "cup chopped shallots (can substitute onions)":"0.33",
         "cloves garlic, minced":"2",
-        "cup dry white wine":"0.3",
+        "cup dry white wine":"0.33",
         "cup cream":"0.25",
         "Tbsp lemon zest":"2",
         "Tbsp lemon juice":"1",
@@ -101,7 +101,7 @@
     "category":"Desserts",
     "ingredients":{
         "cup unsalted butter, room temperature":"0.5",
-        "cups powdered sugar, divided":"1.3",
+        "cups powdered sugar, divided":"1.33",
         "tsp vanilla extract":"2",
         "tsp almond extract":"1",
         "tsp ground allspice":"0.75",
@@ -123,7 +123,7 @@
         "pears, peeled":"2",
         "cups water":"1.25",
         "cup sugar":"0.5",
-        "inch strips of lemon zest":"3",
+        "2 inch strips of lemon zest":"3",
         "cracked whole cardamom":"1",
         "couple grinds of fresh shaved nutmeg":"1",
         "vanilla":""
