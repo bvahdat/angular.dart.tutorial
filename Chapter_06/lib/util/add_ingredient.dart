@@ -4,7 +4,7 @@ const String _DEFAULT_INGREDIENT_NAME = 'Type the ingredient here!';
 const String _DEFAULT_INGREDIENT_AMOUNT = 'Type the amount here!';
 
 
-addIngredientFor(Recipe recipe, [Map<String, String> newIngredient]) {
+addIngredientFor(Recipe recipe, Map<String, String> newIngredient) {
   String ingredientName = newIngredient['name'].trim();
   String ingredientAmount = newIngredient['amount'].trim();
 
@@ -18,11 +18,14 @@ addIngredientFor(Recipe recipe, [Map<String, String> newIngredient]) {
 
   recipe.ingredients[ingredientName] = ingredientAmount;
 
-  newIngredient = getIngredientInputs();
+  // reset
+  newIngredient.clear();
+
+  _reset(newIngredient);
 }
 
-Map<String, String> getIngredientInputs() {
-  return new Map()
-      ..['name'] = _DEFAULT_INGREDIENT_NAME
-      ..['amount'] = _DEFAULT_INGREDIENT_AMOUNT;
-}
+Map<String, String> getIngredientInputs() => _reset(new Map<String, String>());
+
+_reset(Map<String, String> tuple) => tuple
+    ..['name'] = _DEFAULT_INGREDIENT_NAME
+    ..['amount'] = _DEFAULT_INGREDIENT_AMOUNT;

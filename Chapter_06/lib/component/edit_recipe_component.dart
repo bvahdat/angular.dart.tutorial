@@ -31,7 +31,6 @@ class EditRecipeComponent {
 
   addIngredient() {
     addIngredientFor(recipe, newIngredient);
-    newIngredient = getIngredientInputs();
   }
 
   removeIngredient(String ingredient) {

@@ -27,7 +27,6 @@ class AddRecipeComponent {
 
   void addIngredient() {
     addIngredientFor(recipe, newIngredient);
-    newIngredient = getIngredientInputs();
    }
 
   void addRecipe() {
