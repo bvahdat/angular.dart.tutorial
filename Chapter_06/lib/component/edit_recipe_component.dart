@@ -21,8 +21,29 @@ class EditRecipeComponent {
 
   Recipe get recipe => recipeMap == null ? null : recipeMap[_recipeId];
 
+  String anotherIngredientName = '';
+  String anotherIngredientAmount = '';
+
   EditRecipeComponent(RouteProvider routeProvider, this.queryService) {
     _recipeId = routeProvider.parameters['recipeId'];
+  }
+
+  addIngredient() {
+    if (anotherIngredientName.isEmpty) {
+      return;
+    }
+
+    if (anotherIngredientAmount.isEmpty) {
+      // -1 means this ingredient lacks a unit of measurement
+      anotherIngredientAmount = "-1";
+    }
+
+    recipe.ingredients[anotherIngredientName] = anotherIngredientAmount;
+    anotherIngredientName = anotherIngredientAmount = '';
+  }
+
+  removeIngredient(String ingredient) {
+    recipe.ingredients.remove(ingredient);
   }
 
   void saveRecipe() {

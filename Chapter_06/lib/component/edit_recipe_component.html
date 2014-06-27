@@ -21,7 +21,15 @@
       <ul>
         <li ng-repeat="ingredient in cmp.recipe.ingredientNames">
           <input type="text" ng-model="cmp.recipe.ingredients[ingredient]" ng-if="cmp.recipe.isIngredientAmountEditable($index)"/>
-          <input type="text" ng-model="ingredient"/>
+          <input type="text" ng-model="ingredient" readonly/>
+          <input type="button" value="Remove this ingredient" ng-click="cmp.removeIngredient(ingredient)"/>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <input type="text" ng-model="cmp.anotherIngredientAmount"/>
+          <input type="text" ng-model="cmp.anotherIngredientName"/>
+          <input type="button" value="Add new ingredient" ng-click="cmp.addIngredient()"/>
         </li>
       </ul>
     </div>
