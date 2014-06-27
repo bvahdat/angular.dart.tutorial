@@ -19,13 +19,12 @@ addIngredientFor(Recipe recipe, Map<String, String> newIngredient) {
   recipe.ingredients[ingredientName] = ingredientAmount;
 
   // reset
-  newIngredient.clear();
-
   _reset(newIngredient);
 }
 
 Map<String, String> getIngredientInputs() => _reset(new Map<String, String>());
 
 _reset(Map<String, String> tuple) => tuple
+    ..clear()
     ..['name'] = _DEFAULT_INGREDIENT_NAME
     ..['amount'] = _DEFAULT_INGREDIENT_AMOUNT;
