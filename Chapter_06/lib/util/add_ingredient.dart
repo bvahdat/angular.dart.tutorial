@@ -12,7 +12,7 @@ addIngredientFor(Recipe recipe, Map<String, String> newIngredient) {
   }
 
   if (ingredientAmount == _DEFAULT_INGREDIENT_AMOUNT) {
-    ingredientAmount = "";
+    ingredientAmount = '';
   }
 
   recipe.ingredients[ingredientName] = ingredientAmount;
