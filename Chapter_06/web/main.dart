@@ -1,5 +1,6 @@
 library recipe_book;
 
+import 'package:angular/animate/module.dart';
 import 'package:angular/angular.dart';
 import 'package:angular/application_factory.dart';
 import 'package:logging/logging.dart';
@@ -45,6 +46,9 @@ class MyAppModule extends Module {
 
     // routing
     bind(RouteInitializerFn, toValue : recipeBookRouteInitializer);
+
+    // animation
+    install(new AnimationModule());
   }
 }
 

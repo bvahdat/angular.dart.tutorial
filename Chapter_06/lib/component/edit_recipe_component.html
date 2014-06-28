@@ -19,12 +19,13 @@
     <div>
       <strong>Ingredients:</strong>
       <ul>
-        <li ng-repeat="ingredient in cmp.recipe.ingredientNames">
+        <li ng-repeat="ingredient in cmp.recipe.ingredientNames" class="ingredient">
           <input type="button" value="Remove this ingredient" ng-click="cmp.removeIngredient(ingredient)"/>
           <input type="text" ng-model="cmp.recipe.ingredients[ingredient]" ng-if="!cmp.recipe.ingredients[ingredient].trim().isEmpty"/>
           {{ingredient}}
         </li>
       </ul>
+      <br/>
       <ul>
         <li>
           <input type="button" value="Add new ingredient" ng-click="cmp.addIngredient()"/>

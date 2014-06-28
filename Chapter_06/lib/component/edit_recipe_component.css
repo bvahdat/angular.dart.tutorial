@@ -1,3 +1,23 @@
+.ingredient.ng-enter {
+  transition: all 800ms;
+  opacity: 0;
+}
+
+.ingredient.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+.ingredient.ng-leave {
+  transition: all 800ms;
+  -webkit-transform: scale(1.0, 1.0);
+  opacity: 1;
+}
+
+.ingredient.ng-leave-active {
+  -webkit-transform: scale(1.1, 1.1);
+  opacity: 0;
+}
+
 ul {
   list-style-type: none;
 }

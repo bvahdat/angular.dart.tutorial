@@ -29,6 +29,10 @@ class AddRecipeComponent {
     addIngredientFor(recipe, newIngredient);
    }
 
+  void removeIngredient(String ingredient) {
+    recipe.ingredients.remove(ingredient);
+  }
+
   void addRecipe() {
     // the Id property is set through the queryService itself
     queryService.addRecipe(recipe);
