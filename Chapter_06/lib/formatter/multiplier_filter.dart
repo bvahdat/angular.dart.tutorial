@@ -1,18 +1,24 @@
 library multiplier_filter;
 
 import 'package:angular/angular.dart';
+import 'package:logging/logging.dart';
+import '../util/util.dart';
 
 @Formatter(name: 'multiplierfilter')
 class MultiplierFilter {
-  call(number, multiplier) {
-    if (number is String && !number.isEmpty && multiplier is int) {
-      number = double.parse(number) * multiplier;
+
+  Logger _logger = new Logger('MultiplierFilter');
+
+  call(text, multiplier) {
+    if (text is String && isNumber(text) && multiplier is int) {
+      text = double.parse(text) * multiplier;
 
       // avoid long fraction digits
-      return number.toStringAsFixed(2);
+      return text.toStringAsFixed(2);
     }
 
-    return number;
+    _logger.warning('ignoring $text not being a number!');
+    return text;
   }
 
 }

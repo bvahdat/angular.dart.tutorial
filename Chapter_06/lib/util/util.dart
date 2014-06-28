@@ -31,3 +31,5 @@ _reset(Map<String, String> tuple) => tuple
     ..clear()
     ..['name'] = _DEFAULT_INGREDIENT_NAME
     ..['amount'] = _DEFAULT_INGREDIENT_AMOUNT;
+
+bool isNumber(String text) => new RegExp('[0-9]*\.?[0-9]+').hasMatch(text);
