@@ -3,7 +3,7 @@ import '../service/recipe.dart';
 const String _DEFAULT_INGREDIENT_NAME = 'Type the ingredient here!';
 const String _DEFAULT_INGREDIENT_AMOUNT = 'Type the amount here!';
 
-addIngredientFor(Recipe recipe, Map<String, String> newIngredient) {
+addIngredientTo(Recipe recipe, Map<String, String> newIngredient) {
   String ingredientName = newIngredient['name'].trim();
   String ingredientAmount = newIngredient['amount'].trim();
 
@@ -19,6 +19,10 @@ addIngredientFor(Recipe recipe, Map<String, String> newIngredient) {
 
   // reset the map for the next user input
   _reset(newIngredient);
+}
+
+void removeIngredientFrom(Recipe recipe, String ingredient) {
+  recipe.ingredients.remove(ingredient);
 }
 
 Map<String, String> getIngredientInputs() => _reset(new Map<String, String>());

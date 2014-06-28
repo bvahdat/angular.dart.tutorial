@@ -2,7 +2,7 @@ library edit_recipe_component;
 
 import '../service/recipe.dart';
 import '../service/query_service.dart';
-import '../util/add_ingredient.dart';
+import '../util/util.dart';
 import 'package:angular/angular.dart';
 
 @Component(
@@ -30,11 +30,11 @@ class EditRecipeComponent {
   }
 
   addIngredient() {
-    addIngredientFor(recipe, newIngredient);
+    addIngredientTo(recipe, newIngredient);
   }
 
   removeIngredient(String ingredient) {
-    recipe.ingredients.remove(ingredient);
+    removeIngredientFrom(recipe, ingredient);
   }
 
   void saveRecipe() {

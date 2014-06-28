@@ -2,7 +2,7 @@ library add_recipe_component;
 
 import '../service/recipe.dart';
 import '../service/query_service.dart';
-import '../util/add_ingredient.dart';
+import '../util/util.dart';
 import 'package:angular/angular.dart';
 import 'dart:collection';
 
@@ -26,11 +26,11 @@ class AddRecipeComponent {
   }
 
   void addIngredient() {
-    addIngredientFor(recipe, newIngredient);
+    addIngredientTo(recipe, newIngredient);
    }
 
-  void removeIngredient(String ingredient) {
-    recipe.ingredients.remove(ingredient);
+  removeIngredient(String ingredient) {
+    removeIngredientFrom(recipe, ingredient);
   }
 
   void addRecipe() {
