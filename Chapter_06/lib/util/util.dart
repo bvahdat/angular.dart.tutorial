@@ -32,4 +32,15 @@ _reset(Map<String, String> tuple) => tuple
     ..['name'] = _DEFAULT_INGREDIENT_NAME
     ..['amount'] = _DEFAULT_INGREDIENT_AMOUNT;
 
-bool isNumber(String text) => new RegExp('[0-9]*\.?[0-9]+').hasMatch(text);
+final RegExp _REG_EXP = new RegExp('[0-9]*\.?[0-9]+');
+
+bool isNumber(String text) {
+  if (text == null || text.trim().isEmpty) {
+    return false;
+  }
+
+  String firstMatch = _REG_EXP.stringMatch(text);
+
+  // the whole string should resolve to a number
+  return firstMatch != null && firstMatch.compareTo(text) == 0;
+}
