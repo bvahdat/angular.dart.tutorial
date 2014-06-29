@@ -17,7 +17,7 @@ class MultiplierFilter {
       return text.toStringAsFixed(2);
     }
 
-    _logger.warning('ignoring $text not being a number!');
+    _logger.warning('ignoring \'$text\' not being a number!');
     return text;
   }
 

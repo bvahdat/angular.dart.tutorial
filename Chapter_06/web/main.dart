@@ -45,7 +45,7 @@ class MyAppModule extends Module {
     bind(NgRoutingUsePushState, toFactory: (_) => new NgRoutingUsePushState.value(false));
 
     // routing
-    bind(RouteInitializerFn, toValue : recipeBookRouteInitializer);
+    bind(RouteInitializerFn, toValue: recipeBookRouteInitializer);
 
     // animation
     install(new AnimationModule());
@@ -53,9 +53,10 @@ class MyAppModule extends Module {
 }
 
 void main() {
-  Logger.root..level = Level.FINEST
-             ..onRecord.listen((LogRecord r) { print(r.message); });
-  applicationFactory()
-      .addModule(new MyAppModule())
-      .run();
+  Logger.root.level = Level.ALL;
+  Logger.root.onRecord.listen((LogRecord rec) {
+    print('${rec.loggerName}: ${rec.level.name}: ${rec.message}');
+  });
+
+  applicationFactory().addModule(new MyAppModule()).run();
 }
