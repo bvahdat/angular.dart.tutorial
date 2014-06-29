@@ -161,12 +161,12 @@ main() {
   });
 
   group('number recognition', () {
-    test('should properly identify numeric', () {
+    test('should properly identify numeric values', () {
       expect(isNumber('.0329'), isTrue);
       expect(isNumber('715'), isTrue);
       expect(isNumber('39.435'), isTrue);
     });
-    test('should properly identify non-numeric', () {
+    test('should properly identify non-numeric values', () {
       expect(isNumber('.032S9'), isFalse);
       expect(isNumber('34X5'), isFalse);
       expect(isNumber('34R'), isFalse);
