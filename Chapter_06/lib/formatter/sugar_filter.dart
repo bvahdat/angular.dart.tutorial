@@ -17,7 +17,7 @@ class SugarFilter {
   }
 
   _replaceAll(String text) =>
-  // should first replace all the "powdered sugar" patterns BEFORE replacing the "sugar" ones
-  text.replaceAll("powdered sugar", "maple syrup").replaceAll("sugar", "maple syrup");
+  // should first replace all the 'powdered sugar' patterns BEFORE replacing the 'sugar' ones
+  text.replaceAll('powdered sugar', 'maple syrup').replaceAll('sugar', 'maple syrup');
 
 }

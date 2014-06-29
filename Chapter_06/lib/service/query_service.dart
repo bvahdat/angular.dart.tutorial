@@ -22,7 +22,7 @@ class QueryService {
   final Http _http;
 
   QueryService(Http this._http) {
-    converter = new JsonEncoder.withIndent("  ");
+    converter = new JsonEncoder.withIndent('  ');
     _loaded = Future.wait([_loadRecipes(), _loadCategories()]);
   }
 

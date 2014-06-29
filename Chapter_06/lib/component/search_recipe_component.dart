@@ -11,7 +11,7 @@ class SearchRecipeComponent {
   List<String> _categories;
 
   @NgTwoWay('name-filter-string')
-  String nameFilterString = "";
+  String nameFilterString = '';
 
   @NgOneWay('category-filter-map')
   Map<String, bool> get categoryFilterMap => _categoryFilterMap;
@@ -24,6 +24,6 @@ class SearchRecipeComponent {
 
   void clearFilters() {
     _categoryFilterMap.keys.forEach((f) => _categoryFilterMap[f] = false);
-    nameFilterString = "";
+    nameFilterString = '';
   }
 }

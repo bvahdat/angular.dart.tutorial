@@ -21,7 +21,7 @@ class AddRecipeComponent {
   Recipe recipe;
 
   AddRecipeComponent(this.queryService) {
-    recipe = new Recipe(null, "The recipe name", "The category name", new LinkedHashMap<String, String>(), "The recipe directions", 0, "fonzie1.jpg");
+    recipe = new Recipe(null, 'The recipe name', 'The category name', new LinkedHashMap<String, String>(), 'The recipe directions', 0, 'fonzie1.jpg');
     newIngredient = getIngredientInputs();
   }
 

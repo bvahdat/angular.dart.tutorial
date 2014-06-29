@@ -6,8 +6,12 @@ import 'package:angular/angular.dart';
 import 'package:angular/mock/module.dart';
 import 'package:angular_dart_demo/recipe_book.dart';
 import 'package:angular_dart_demo/formatter/category_filter.dart';
+import 'package:angular_dart_demo/formatter/fahrenheit_to_celsius_filter.dart';
+import 'package:angular_dart_demo/formatter/multiplier_filter.dart';
+import 'package:angular_dart_demo/formatter/sugar_filter.dart';
 import 'package:angular_dart_demo/rating/rating_component.dart';
 import 'package:angular_dart_demo/service/recipe.dart';
+import 'package:angular_dart_demo/util/util.dart';
 
 import '../web/main.dart';
 
@@ -110,8 +114,59 @@ main() {
       var r1 = new Recipe(null, null, 'C1', null, null, null, null);
       var r2 = new Recipe(null, null, 'C2', null, null, null, null);
       var list = [r1, r2];
-      var map = {"C1": false, "C2": true};
+      var map = {'C1': false, 'C2': true};
       expect(filter(list, map), equals([r2]));
     }));
+  });
+
+  group('ftocfilter', () {
+    test('should multiply correctly', inject((FtoCFilter filter) {
+      expect(filter('Preheat oven to 250 degrees F. Clean the mushrooms.', true), equals('Preheat oven to 121 degrees C. Clean the mushrooms.'));
+      expect(filter('Preheat oven to 250 degrees F. Clean the mushrooms.', false), equals('Preheat oven to 250 degrees F. Clean the mushrooms.'));
+
+      expect(filter('Preheat oven to 250 degree F. Clean the mushrooms.', true), equals('Preheat oven to 250 degree F. Clean the mushrooms.'));
+      expect(filter('Preheat oven to 250 degrees F Clean the mushrooms.', true), equals('Preheat oven to 250 degrees F Clean the mushrooms.'));
+
+      expect(filter('Cook and drain the beans.', true), equals('Cook and drain the beans.'));
+      expect(filter('Cook and drain the beans.', false), equals('Cook and drain the beans.'));
+    }));
+  });
+
+  group('multiplierfilter', () {
+    test('should multiply correctly', inject((MultiplierFilter filter) {
+      expect(filter('3', 7), equals('21.00'));
+      expect(filter('0.25', 3), equals('0.75'));
+      expect(filter('1.3', 4), equals('5.20'));
+      expect(filter('2.13', 2), equals('4.26'));
+
+      expect(filter('1.4s', 2), equals('1.4s'));
+      expect(filter('3x45', 3), equals('3x45'));
+      expect(filter('25A', 2), equals('25A'));
+      expect(filter('AbC', 1), equals('AbC'));
+    }));
+  });
+
+  group('sugarfilter', () {
+    test('should multiply correctly', inject((SugarFilter filter) {
+      expect(filter('cups powdered sugar, divided', true), equals('cups maple syrup, divided'));
+      expect(filter('some sugar and cups powdered sugar, divided', true), equals('some maple syrup and cups maple syrup, divided'));
+
+      expect(filter('cups powdered sugar, divided', false), equals('cups powdered sugar, divided'));
+      expect(filter('some sugar and cups powdered sugar, divided', false), equals('some sugar and cups powdered sugar, divided'));
+    }));
+  });
+
+  group('number recognition', () {
+    test('should properly identify numbers', () {
+      expect(isNumber('.0329'), isTrue);
+      expect(isNumber('715'), isTrue);
+      expect(isNumber('39.435'), isTrue);
+
+      expect(isNumber('.032S9'), isFalse);
+      expect(isNumber('34X5'), isFalse);
+      expect(isNumber('34R'), isFalse);
+      expect(isNumber('12.4z35'), isFalse);
+      expect(isNumber('12x.435'), isFalse);
+    });
   });
 }
