@@ -120,48 +120,53 @@ main() {
   });
 
   group('ftocfilter', () {
-    test('should multiply correctly', inject((FtoCFilter filter) {
+    test('should convert if pattern found and applyFtoCFilter is true', inject((FtoCFilter filter) {
       expect(filter('Preheat oven to 250 degrees F. Clean the mushrooms.', true), equals('Preheat oven to 121 degrees C. Clean the mushrooms.'));
+      expect(filter('Preheat oven to 350 degrees F.', true), equals('Preheat oven to 177 degrees C.'));
+    }));
+    test('should not convert if pattern not found or applyFtoCFilter is false', inject((FtoCFilter filter) {
       expect(filter('Preheat oven to 250 degrees F. Clean the mushrooms.', false), equals('Preheat oven to 250 degrees F. Clean the mushrooms.'));
-
       expect(filter('Preheat oven to 250 degree F. Clean the mushrooms.', true), equals('Preheat oven to 250 degree F. Clean the mushrooms.'));
       expect(filter('Preheat oven to 250 degrees F Clean the mushrooms.', true), equals('Preheat oven to 250 degrees F Clean the mushrooms.'));
-
       expect(filter('Cook and drain the beans.', true), equals('Cook and drain the beans.'));
       expect(filter('Cook and drain the beans.', false), equals('Cook and drain the beans.'));
     }));
   });
 
   group('multiplierfilter', () {
-    test('should multiply correctly', inject((MultiplierFilter filter) {
+    test('should multiply correctly if number', inject((MultiplierFilter filter) {
       expect(filter('3', 7), equals('21.00'));
       expect(filter('0.25', 3), equals('0.75'));
       expect(filter('1.3', 4), equals('5.20'));
       expect(filter('2.13', 2), equals('4.26'));
-
+    }));
+    test('should not touch if not number', inject((MultiplierFilter filter) {
       expect(filter('1.4s', 2), equals('1.4s'));
       expect(filter('3x45', 3), equals('3x45'));
       expect(filter('25A', 2), equals('25A'));
-      expect(filter('AbC', 1), equals('AbC'));
+      expect(filter('AbC', 4), equals('AbC'));
     }));
   });
 
   group('sugarfilter', () {
-    test('should multiply correctly', inject((SugarFilter filter) {
+    test('should change to maple syrup if applySugarFilter is true', inject((SugarFilter filter) {
       expect(filter('cups powdered sugar, divided', true), equals('cups maple syrup, divided'));
-      expect(filter('some sugar and cups powdered sugar, divided', true), equals('some maple syrup and cups maple syrup, divided'));
-
+      expect(filter('some sugar and again cups powdered sugar, yeah this is yummy', true), equals('some maple syrup and again cups maple syrup, yeah this is yummy'));
+    }));
+    test('should not touch if pattern not found or applySugarFilter is false', inject((SugarFilter filter) {
       expect(filter('cups powdered sugar, divided', false), equals('cups powdered sugar, divided'));
       expect(filter('some sugar and cups powdered sugar, divided', false), equals('some sugar and cups powdered sugar, divided'));
+      expect(filter('some of this and cups of that, divided', true), equals('some of this and cups of that, divided'));
     }));
   });
 
   group('number recognition', () {
-    test('should properly identify numbers', () {
+    test('should properly identify if numbers', () {
       expect(isNumber('.0329'), isTrue);
       expect(isNumber('715'), isTrue);
       expect(isNumber('39.435'), isTrue);
-
+    });
+    test('should not identify if no numbers', () {
       expect(isNumber('.032S9'), isFalse);
       expect(isNumber('34X5'), isFalse);
       expect(isNumber('34R'), isFalse);
