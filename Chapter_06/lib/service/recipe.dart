@@ -39,5 +39,15 @@ class Recipe {
     "imgUrl": imgUrl
   };
 
-  Recipe.fromJson(Map<String, dynamic> json) : this(json['id'], json['name'], json['category'], json['ingredients'], json['directions'], json['rating'], json['imgUrl']);
+  Recipe.fromJson(Map<String, dynamic> json) : this(json['id'],
+                                                    json['name'],
+                                                    json['category'],
+                                                    json['ingredients'],
+                                                    json['directions'],
+                                                    json['rating'],
+                                                    json['imgUrl']);
+
+  Recipe copyOf() {
+    return new Recipe(id, name, category, new Map.from(ingredients), directions, rating, imgUrl);
+  }
 }

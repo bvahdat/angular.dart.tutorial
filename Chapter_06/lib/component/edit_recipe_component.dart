@@ -14,13 +14,27 @@ class EditRecipeComponent {
   @NgOneWay('categories')
   List<String> categories;
 
-  @NgOneWay('recipe-map')
+  @NgTwoWay('recipe-map')
   Map<String, Recipe> recipeMap;
 
   final QueryService queryService;
   String _recipeId;
 
-  Recipe get recipe => recipeMap == null ? null : recipeMap[_recipeId];
+  // a copy of the current Recipe the user wants to edit (which he will probably cancel/undo)
+  Recipe _recipeCopy;
+
+  Recipe get recipe {
+    if (recipeMap == null) {
+      return null;
+    }
+
+    if (_recipeCopy == null) {
+      // let the user to edit a clone of the current recipe (and not the current recipe itself)
+      _recipeCopy = recipeMap[_recipeId].copyOf();
+    }
+
+    return _recipeCopy;
+  }
 
   Map<String, String> newIngredient;
 
@@ -38,6 +52,8 @@ class EditRecipeComponent {
   }
 
   void saveRecipe() {
+   // commit the pending changes both into the memory as well as the back-end
+   recipeMap[_recipeId] = _recipeCopy;
    queryService.saveRecipe(recipe);
   }
 

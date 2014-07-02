@@ -29,6 +29,9 @@ class RecipeBookController {
 
   Map<String, Recipe> _recipeMap = {};
   Map<String, Recipe> get recipeMap => _recipeMap;
+  set recipeMap(Map<String, Recipe> anotherRecipeMap) {
+    _loadRecipes(anotherRecipeMap);
+  }
   List<Recipe> _allRecipes = [];
 
   List<Recipe> get allRecipes => _allRecipes;
@@ -61,10 +64,8 @@ class RecipeBookController {
 
   void _loadData() {
     queryService.getAllRecipes()
-      .then((Map<String, Recipe> allRecipes) {
-        _recipeMap = allRecipes;
-        _allRecipes = _recipeMap.values.toList();
-        recipesLoaded = true;
+      .then((Map<String, Recipe> backendRecipes) {
+        _loadRecipes(backendRecipes);
       })
       .catchError((e) {
         print(e);
@@ -85,5 +86,11 @@ class RecipeBookController {
         categoriesLoaded = false;
         message = ERROR_MESSAGE;
       });
+  }
+
+  void _loadRecipes(Map<String, Recipe> newRecipeMap) {
+    _recipeMap = newRecipeMap;
+    _allRecipes = _recipeMap.values.toList();
+    recipesLoaded = true;
   }
 }

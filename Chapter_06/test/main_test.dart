@@ -124,6 +124,7 @@ main() {
       expect(filter('Preheat oven to 250 degrees F. Clean the mushrooms.', true), equals('Preheat oven to 121 degrees C. Clean the mushrooms.'));
       expect(filter('Preheat oven to 350 degrees F.', true), equals('Preheat oven to 177 degrees C.'));
     }));
+
     test('should not convert if pattern not found or applyFtoCFilter is false', inject((FtoCFilter filter) {
       expect(filter('Preheat oven to 250 degrees F. Clean the mushrooms.', false), equals('Preheat oven to 250 degrees F. Clean the mushrooms.'));
       expect(filter('Preheat oven to 250 degree F. Clean the mushrooms.', true), equals('Preheat oven to 250 degree F. Clean the mushrooms.'));
@@ -140,6 +141,7 @@ main() {
       expect(filter('1.3', 4), equals('5.20'));
       expect(filter('2.13', 2), equals('4.26'));
     }));
+
     test('should not touch if not number', inject((MultiplierFilter filter) {
       expect(filter('1.4s', 2), equals('1.4s'));
       expect(filter('3x45', 3), equals('3x45'));
@@ -153,6 +155,7 @@ main() {
       expect(filter('cups powdered sugar, divided', true), equals('cups maple syrup, divided'));
       expect(filter('some sugar and again cups powdered sugar, yeah this is yummy', true), equals('some maple syrup and again cups maple syrup, yeah this is yummy'));
     }));
+
     test('should not touch if pattern not found or applySugarFilter is false', inject((SugarFilter filter) {
       expect(filter('cups powdered sugar, divided', false), equals('cups powdered sugar, divided'));
       expect(filter('some sugar and cups powdered sugar, divided', false), equals('some sugar and cups powdered sugar, divided'));
@@ -166,6 +169,7 @@ main() {
       expect(isNumber('715'), isTrue);
       expect(isNumber('39.435'), isTrue);
     });
+
     test('should properly identify non-numeric values', () {
       expect(isNumber('.032S9'), isFalse);
       expect(isNumber('34X5'), isFalse);
