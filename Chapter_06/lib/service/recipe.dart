@@ -47,7 +47,5 @@ class Recipe {
                                                     json['rating'],
                                                     json['imgUrl']);
 
-  Recipe copyOf() {
-    return new Recipe(id, name, category, new Map.from(ingredients), directions, rating, imgUrl);
-  }
+  Recipe copyOf() => new Recipe(id, name, category, new Map.from(ingredients), directions, rating, imgUrl);
 }
