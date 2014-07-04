@@ -54,7 +54,7 @@ class EditRecipeComponent {
   void saveRecipe() {
    // commit the pending changes both into the memory as well as the back-end
    recipeMap[_recipeId] = _recipeCopy;
-   queryService.saveRecipe(recipe);
+   queryService.saveRecipe(_recipeCopy);
   }
 
 }

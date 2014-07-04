@@ -17,7 +17,7 @@ class MultiplierFilter {
       return text.toStringAsFixed(2);
     }
 
-    _logger.warning('skipped \'$text\'!');
+    _logger.warning('skipped the value \'$text\' with the given multiplier \'$multiplier\'!');
     return text;
   }
 
