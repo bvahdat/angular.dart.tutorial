@@ -7,7 +7,7 @@ addIngredientTo(Recipe recipe, Map<String, String> newIngredient) {
   String ingredientName = newIngredient['name'].trim();
   String ingredientAmount = newIngredient['amount'].trim();
 
-  if (ingredientName == _DEFAULT_INGREDIENT_NAME) {
+  if (ingredientName == _DEFAULT_INGREDIENT_NAME || ingredientName.isEmpty) {
     return;
   }
 
@@ -42,5 +42,5 @@ bool isNumber(String text) {
   String firstMatch = _REG_EXP.stringMatch(text);
 
   // the whole string should resolve to a number
-  return firstMatch != null && firstMatch.compareTo(text) == 0;
+  return firstMatch != null && firstMatch == text;
 }
